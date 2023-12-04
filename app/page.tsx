@@ -1,40 +1,24 @@
-"use client";
-
-// Helpers
-import { useTheme } from "next-themes";
-
 // Components
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import ThemeToggleButton from "@/components/theme-toggle-button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import EntityData from "@/components/entity-data";
 
 export default function Home() {
-  const { theme, setTheme } = useTheme();
-
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+  const renderList = (elementsNumber: number) => {
+    return [...Array(elementsNumber)].map((_, i) => <EntityData key={i} />);
   };
 
   return (
-    <main className="flex flex-col items-center justify-between">
-      <section className="flex h-screen flex-col items-center justify-center">
-        <Card className="w-[380px]">
-          <CardHeader>
-            <CardTitle>Deep Dive Tech</CardTitle>
-            <CardDescription>
-              Navigating the Depths of Cutting-Edge Innovation
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="grid gap-4">
-            <ThemeToggleButton theme={theme} toggleTheme={toggleTheme} />
-          </CardContent>
-        </Card>
-      </section>
+    <main className="flex flex-1 flex-col m-auto max-w-2xl w-full items-left justify-between">
+      <Tabs defaultValue="people" className="w-full">
+        <TabsList className="mb-5">
+          <TabsTrigger value="people">People</TabsTrigger>
+          <TabsTrigger value="posts">Posts</TabsTrigger>
+          <TabsTrigger value="comments">Comments</TabsTrigger>
+        </TabsList>
+        <TabsContent value="people">{renderList(10)}</TabsContent>
+        <TabsContent value="posts">{renderList(30)}</TabsContent>
+        <TabsContent value="comments">{renderList(50)}</TabsContent>
+      </Tabs>
     </main>
   );
 }
