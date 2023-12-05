@@ -1,7 +1,7 @@
 "use client";
 
 // Components
-import ThemeToggleButton from "@/components/theme-toggle-button";
+import ThemeToggleButton from "@/components/ThemeToggleButton";
 
 // Helpers
 import { useTheme } from "next-themes";

@@ -2,7 +2,7 @@
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
 // Components
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 
 //Types
 type ThemeToggleButtonProps = {

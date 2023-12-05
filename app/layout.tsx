@@ -1,18 +1,19 @@
+// Core
 import type { Metadata } from "next";
 
 // Fonts
 import { Inter as FontSans } from "next/font/google";
 
 // Components
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 // Styles
-import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/globals.css";
 
 // Helpers
-import { cn } from "@/lib/utils";
+import { cn, Providers } from "@/lib/helpers";
+import { SITE_CONFIG } from "@/config/site";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -20,8 +21,8 @@ const fontSans = FontSans({
 });
 
 const metadata: Metadata = {
-  title: "Deep Dive Tech",
-  description: "Navigating the Depths of Cutting-Edge Innovation",
+  title: SITE_CONFIG.title,
+  description: SITE_CONFIG.description,
 };
 
 export default function RootLayout({
@@ -33,18 +34,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className={cn("bg-background font-sans antialiased", fontSans.variable)}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="relative flex min-h-screen justify-between flex-col">
+        <div className="relative flex min-h-screen justify-between flex-col">
+          <Providers>
             <Header />
             {children}
             <Footer />
-          </div>
-        </ThemeProvider>
+          </Providers>
+        </div>
       </body>
     </html>
   );

@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { SITE_CONFIG } from "@/config/site";
 
 export function Footer() {
   return (
@@ -7,7 +7,7 @@ export function Footer() {
         <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
           Built by{" "}
           <a
-            href={siteConfig.links.website}
+            href={SITE_CONFIG.links.website}
             target="_blank"
             rel="noreferrer"
             className="font-medium underline underline-offset-4"
@@ -16,7 +16,7 @@ export function Footer() {
           </a>
           . The source code is available on{" "}
           <a
-            href={siteConfig.links.github}
+            href={SITE_CONFIG.links.github}
             target="_blank"
             rel="noreferrer"
             className="font-medium underline underline-offset-4"

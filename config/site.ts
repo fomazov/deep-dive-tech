@@ -1,6 +1,8 @@
-export const siteConfig = {
+export const SITE_CONFIG = {
   name: "deep-dive-tech",
+  title: "Deep Dive Tech",
   description: "Navigating the Depths of Cutting-Edge Innovation.",
+  defaultTheme: "system",
   links: {
     github:
       "https://github.com/fomazov/deep-dive-tech/tree/feature/request_cancellation",
@@ -8,4 +10,4 @@ export const siteConfig = {
   },
 };
 
-export type SiteConfig = typeof siteConfig;
+export type SiteConfig = typeof SITE_CONFIG;
