@@ -14,12 +14,12 @@ import "@/styles/globals.css";
 // Helpers
 import { cn } from "@/lib/utils";
 
-export const fontSans = FontSans({
+const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "Deep Dive Tech",
   description: "Navigating the Depths of Cutting-Edge Innovation",
 };
