@@ -13,7 +13,6 @@ export type ReduxThunkAction<ReturnType = void> = ThunkAction<
 >;
 
 // Cards
-
 export interface EntityDataProps {
   creature: Creature;
 }
@@ -24,3 +23,7 @@ export type Creature = {
   size: string;
   species: string;
 };
+
+export interface LoadingPlaceholderProps {
+  elementsCount: number;
+}

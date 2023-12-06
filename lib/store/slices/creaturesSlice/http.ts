@@ -1,5 +1,5 @@
-export const http = async (): Promise<{}> => {
-  const response = await fetch("/api/creatures", {
+export const http = async (count = 1): Promise<{}> => {
+  const response = await fetch(`/api/creatures?count=${count}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });

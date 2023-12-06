@@ -12,8 +12,8 @@ const initialState: CreaturesSliceState = {
 
 export const fetchCreatures = createAppAsyncThunk(
   "CREATURES/fetchCreatures",
-  async () => {
-    const response = await http();
+  async (count: number) => {
+    const response = await http(count);
 
     return response;
   },
