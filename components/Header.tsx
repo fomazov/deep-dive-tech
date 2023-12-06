@@ -32,8 +32,12 @@ export function Header() {
       href: "/",
     },
     {
-      name: "Creatures",
+      name: "Marine Creatures",
       href: "/creatures",
+    },
+    {
+      name: "Oceanic Plants",
+      href: "/plants",
     },
   ];
   return (

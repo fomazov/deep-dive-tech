@@ -15,27 +15,27 @@ const initialState: SliceState = {
   status: "idle",
 };
 
-export const fetchCreatures = createAppAsyncThunk(
-  "CREATURES/fetchCreatures",
+export const fetchPlants = createAppAsyncThunk(
+  "PLANTS/fetchPlants",
   async (count: number) => {
     const response = await Http.get({
-      url: `/api/creatures?count=${count}`,
+      url: `/api/plants?count=${count}`,
     } as Request<string>);
 
     return response;
   },
 );
 
-export const creaturesSlice = createSlice({
-  name: "CREATURES",
+export const plantsSlice = createSlice({
+  name: "PLANTS",
   initialState,
   reducers: {},
   extraReducers: builder => {
     builder
-      .addCase(fetchCreatures.pending, state => {
+      .addCase(fetchPlants.pending, state => {
         state.status = "loading";
       })
-      .addCase(fetchCreatures.fulfilled, (state, action) => {
+      .addCase(fetchPlants.fulfilled, (state, action) => {
         state.status = "idle";
         state.data = action.payload;
       });

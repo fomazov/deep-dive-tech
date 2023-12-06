@@ -1,6 +1,12 @@
 import { type ThunkAction, type Action } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 
+// HTTP
+export type Request<T> = {
+  method?: "GET" | "POST";
+  url: string;
+};
+
 // Store
 export type ReduxStore = typeof reduxStore;
 export type ReduxState = ReturnType<typeof reduxStore.getState>;
@@ -12,17 +18,19 @@ export type ReduxThunkAction<ReturnType = void> = ThunkAction<
   Action
 >;
 
-// Cards
-export interface EntityDataProps {
-  creature: Creature;
+export interface SliceState {
+  data: EntityDataProps;
+  status: "idle" | "loading" | "failed";
 }
 
-export type Creature = {
+// Cards
+export interface EntityDataProps {
+  id: string;
   habitat: string;
   lifespan: string;
   size: string;
   species: string;
-};
+}
 
 export interface LoadingPlaceholderProps {
   elementsCount: number;

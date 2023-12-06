@@ -12,13 +12,13 @@ export async function GET(req: NextRequest, res: NextResponse) {
   const queryParams = new URLSearchParams(url.search);
   const count = queryParams.get("count") ?? defaultItemsPerRequest;
 
-  const creatures = Array.from({ length: +count }, () => ({
+  const plants = Array.from({ length: +count }, () => ({
     id: faker.string.uuid(),
     habitat: faker.location.country(),
     lifespan: `${faker.number.int({ min: 1, max: 100 })} years`,
     size: `${faker.number.int({ min: 1, max: 20 })} feet`,
-    species: faker.animal.fish(),
+    species: faker.lorem.slug(),
   }));
 
-  return NextResponse.json([...creatures]);
+  return NextResponse.json([...plants]);
 }
