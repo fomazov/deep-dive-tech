@@ -37,7 +37,9 @@ export default function RootLayout({
         <div className="relative flex min-h-screen justify-between flex-col">
           <Providers>
             <Header />
-            {children}
+            <main className="flex flex-1 flex-col m-auto max-w-2xl w-full items-left justify-between">
+              {children}
+            </main>
             <Footer />
           </Providers>
         </div>
