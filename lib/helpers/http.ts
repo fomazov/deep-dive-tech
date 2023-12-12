@@ -1,16 +1,18 @@
 import { Request } from "@/types";
 
 export class Http {
-  static get({ url }: Request<string>) {
+  static get({ signal, url }: Request<string>) {
     return Http._fetchMethod({
+      signal,
       url,
     } as Request<null>);
   }
 
-  static async _fetchMethod({ url = "" }: Request<null>) {
+  static async _fetchMethod({ signal, url = "" }: Request<null>) {
     const response = await fetch(url, {
-      method: "GET",
       headers: { "Content-Type": "application/json" },
+      method: "GET",
+      signal,
     });
 
     if (response.ok) {

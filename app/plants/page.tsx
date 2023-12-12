@@ -19,9 +19,17 @@ export default function Plants() {
   const dispatch = useDispatch();
   const { data, status } = useSelector(({ plants }) => plants);
 
+  // Read more about aborting requests here:
+  // https://redux-toolkit.js.org/api/createAsyncThunk#canceling-while-running
+
   useEffect(() => {
-    dispatch(fetchPlants(SITE_CONFIG.itemsPerRequest));
-  }, []);
+    const plantsFetchRequest = dispatch(
+      fetchPlants({ count: SITE_CONFIG.itemsPerRequest }),
+    );
+
+    // Cancel pending requests
+    return () => plantsFetchRequest.abort();
+  }, [dispatch]);
 
   return status === "loading" ? (
     <LoadingPlaceholder elementsCount={SITE_CONFIG.itemsPerRequest} />

@@ -4,7 +4,12 @@ import { configureStore } from "@reduxjs/toolkit";
 // HTTP
 export type Request<T> = {
   method?: "GET" | "POST";
+  signal?: AbortSignal;
   url: string;
+};
+
+export type DispatchArgs = {
+  count: number;
 };
 
 // Store
@@ -19,7 +24,7 @@ export type ReduxThunkAction<ReturnType = void> = ThunkAction<
 >;
 
 export interface SliceState {
-  data: EntityDataProps;
+  data: EntityDataProps[];
   status: "idle" | "loading" | "failed";
 }
 

@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
       "https://github.com/fomazov/deep-dive-tech/tree/feature/request_cancellation",
     website: "https://oleksii.fomazov.name",
   },
-  latency: 500,
+  latency: 2000,
   itemsPerRequest: 10,
   defaultItemsPerRequest: 10,
 };

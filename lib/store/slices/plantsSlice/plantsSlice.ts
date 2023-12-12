@@ -8,7 +8,7 @@ import { createAppAsyncThunk } from "@/lib/store/createAppAsyncThunk";
 import { Http } from "@/lib/helpers";
 
 // Types
-import { Request, SliceState } from "@/types";
+import { DispatchArgs, Request, SliceState } from "@/types";
 
 const initialState: SliceState = {
   data: [],
@@ -17,8 +17,9 @@ const initialState: SliceState = {
 
 export const fetchPlants = createAppAsyncThunk(
   "PLANTS/fetchPlants",
-  async (count: number) => {
+  async ({ count }: DispatchArgs, { signal }) => {
     const response = await Http.get({
+      signal,
       url: `/api/plants?count=${count}`,
     } as Request<string>);
 

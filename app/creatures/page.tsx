@@ -19,9 +19,17 @@ export default function Creatures() {
   const dispatch = useDispatch();
   const { data, status } = useSelector(({ creatures }) => creatures);
 
+  // Read more about aborting requests here:
+  // https://redux-toolkit.js.org/api/createAsyncThunk#canceling-while-running
+
   useEffect(() => {
-    dispatch(fetchCreatures(SITE_CONFIG.itemsPerRequest));
-  }, []);
+    const creaturesFetchRequest = dispatch(
+      fetchCreatures({ count: SITE_CONFIG.itemsPerRequest }),
+    );
+
+    // Cancel pending requests
+    return () => creaturesFetchRequest.abort();
+  }, [dispatch]);
 
   return status === "loading" ? (
     <LoadingPlaceholder elementsCount={SITE_CONFIG.itemsPerRequest} />
