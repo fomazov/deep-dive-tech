@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "@/lib/store/createAppAsyncThunk";
 
 // Helpers
-import { Http } from "@/lib/helpers";
+import { Http, isEmptyArr } from "@/lib/helpers";
 
 // Types
 import { DispatchArgs, Request, SliceState } from "@/types";
@@ -24,6 +24,14 @@ export const fetchPlants = createAppAsyncThunk(
     } as Request<string>);
 
     return response;
+  },
+  {
+    condition: (_, { getState }) => {
+      // Do not execute the request if the data is already in the store
+      // Read more: https://redux-toolkit.js.org/api/createAsyncThunk#options
+      return isEmptyArr(getState().plants.data);
+    },
+    dispatchConditionRejection: true,
   },
 );
 
