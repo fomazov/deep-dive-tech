@@ -12,12 +12,15 @@ import { DispatchArgs, Request, SliceState } from "@/types";
 
 const initialState: SliceState = {
   data: [],
+  error: null,
   status: "idle",
 };
 
 export const fetchCreatures = createAppAsyncThunk(
   "CREATURES/fetchCreatures",
-  async ({ count }: DispatchArgs, { signal }) => {
+  async ({ count }: DispatchArgs, { dispatch, signal }) => {
+    dispatch(resetCreatures());
+
     const response = await Http.get({
       signal,
       url: `/api/creatures?count=${count}`,
@@ -38,11 +41,23 @@ export const fetchCreatures = createAppAsyncThunk(
 export const creaturesSlice = createSlice({
   name: "CREATURES",
   initialState,
-  reducers: {},
+  reducers: {
+    resetCreatures: state => {
+      // Keep the status field unchanged while resetting data and error
+      return {
+        ...state,
+        data: initialState.data,
+        error: initialState.error,
+      };
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchCreatures.pending, state => {
         state.status = "loading";
+      })
+      .addCase(fetchCreatures.rejected, (state, action) => {
+        state.error = action.error.name ?? null;
       })
       .addCase(fetchCreatures.fulfilled, (state, action) => {
         state.status = "idle";
@@ -50,3 +65,5 @@ export const creaturesSlice = createSlice({
       });
   },
 });
+
+const { resetCreatures } = creaturesSlice.actions;

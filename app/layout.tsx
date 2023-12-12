@@ -14,6 +14,7 @@ import "@/styles/globals.css";
 // Helpers
 import { cn, Providers } from "@/lib/helpers";
 import { SITE_CONFIG } from "@/config/site";
+import { Toaster } from "@/components/ui/Toaster";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({
             <main className="flex flex-1 flex-col m-auto max-w-2xl w-full items-left">
               {children}
             </main>
+            <Toaster />
             <Footer />
           </Providers>
         </div>

@@ -12,12 +12,15 @@ import { DispatchArgs, Request, SliceState } from "@/types";
 
 const initialState: SliceState = {
   data: [],
+  error: null,
   status: "idle",
 };
 
 export const fetchPlants = createAppAsyncThunk(
   "PLANTS/fetchPlants",
-  async ({ count }: DispatchArgs, { signal }) => {
+  async ({ count }: DispatchArgs, { dispatch, signal }) => {
+    dispatch(resetPlants());
+
     const response = await Http.get({
       signal,
       url: `/api/plants?count=${count}`,
@@ -38,11 +41,23 @@ export const fetchPlants = createAppAsyncThunk(
 export const plantsSlice = createSlice({
   name: "PLANTS",
   initialState,
-  reducers: {},
+  reducers: {
+    resetPlants: state => {
+      // Keep the status field unchanged while resetting data and error
+      return {
+        ...state,
+        data: initialState.data,
+        error: initialState.error,
+      };
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchPlants.pending, state => {
         state.status = "loading";
+      })
+      .addCase(fetchPlants.rejected, (state, action) => {
+        state.error = action.error.name ?? null;
       })
       .addCase(fetchPlants.fulfilled, (state, action) => {
         state.status = "idle";
@@ -50,3 +65,5 @@ export const plantsSlice = createSlice({
       });
   },
 });
+
+const { resetPlants } = plantsSlice.actions;

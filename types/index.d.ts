@@ -25,8 +25,15 @@ export type ReduxThunkAction<ReturnType = void> = ThunkAction<
 
 export interface SliceState {
   data: EntityDataProps[];
+  error: string | null;
   status: "idle" | "loading" | "failed";
 }
+
+export type ErrorType = {
+  title: string;
+  description: string;
+  style: "destructive" | "default";
+};
 
 // Cards
 export interface EntityDataProps {
