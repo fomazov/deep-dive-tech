@@ -31,7 +31,6 @@ export interface SliceState {
 
 export type ErrorType = {
   title: string;
-  description: string;
   style: "destructive" | "default";
 };
 

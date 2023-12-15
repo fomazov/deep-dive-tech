@@ -26,21 +26,19 @@ export function Toaster() {
 
   const ERRORS: { [key: string]: ErrorType } = Object.freeze({
     AbortError: {
-      title: "Info",
-      description: "The request has been aborted due to a user action",
+      title: "The request has been aborted due to a user action",
       style: "destructive",
     },
     ConditionError: {
-      title: "Info",
-      description: "The request has been cached for faster response times.",
+      title: "The request has been cached for faster response times",
       style: "default",
     },
   });
 
   const handleErrors = (error: string | undefined) => {
     if (error) {
-      const { style, title, description } = ERRORS[error as keyof typeof ERRORS];
-      toast({ variant: style, title, description });
+      const { style, title } = ERRORS[error as keyof typeof ERRORS];
+      toast({ variant: style, title });
     }
   };
 
