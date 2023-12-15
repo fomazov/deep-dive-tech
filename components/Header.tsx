@@ -28,7 +28,7 @@ export function Header() {
 
   const navigation = [
     {
-      name: "Home",
+      name: "Index Page",
       href: "/",
     },
     {
@@ -42,7 +42,7 @@ export function Header() {
   ];
   return (
     <header className="top-0 z-50 w-full py-8 mb-12 border-b bg-primary-foreground">
-      <div className="container px-0 max-w-2xl flex h-14 items-center">
+      <div className="container px-0 max-w-2xl flex h-14 justify-center items-center">
         <nav className="font-medium sm:inline-block">
           <NavigationMenu>
             <NavigationMenuList>
@@ -62,7 +62,7 @@ export function Header() {
             </NavigationMenuList>
           </NavigationMenu>
         </nav>
-        <div className="flex flex-1 items-center justify-end">
+        <div className="flex ml-8 items-center justify-end">
           <ThemeToggleButton theme={theme} toggleTheme={toggleTheme} />
         </div>
       </div>
