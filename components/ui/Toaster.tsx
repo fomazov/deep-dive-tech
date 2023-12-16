@@ -21,7 +21,6 @@ import { ErrorType } from "@/types";
 
 export function Toaster() {
   const { error: creaturesError } = useSelector(({ creatures }) => creatures);
-  const { error: plantsError } = useSelector(({ plants }) => plants);
   const { toast, toasts } = useToast();
 
   const ERRORS: { [key: string]: ErrorType } = Object.freeze({
@@ -45,10 +44,6 @@ export function Toaster() {
   useEffect(() => {
     handleErrors(creaturesError);
   }, [creaturesError]);
-
-  useEffect(() => {
-    handleErrors(plantsError);
-  }, [plantsError]);
 
   return (
     <ToastProvider>

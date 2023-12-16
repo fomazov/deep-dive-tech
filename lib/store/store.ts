@@ -2,7 +2,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 // Reducers
-import { reducer } from "./rootReducer";
+import { creaturesSlice } from "./slices";
+
+const reducer = {
+  creatures: creaturesSlice.reducer,
+};
 
 export const reduxStore = configureStore({
   reducer,

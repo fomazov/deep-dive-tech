@@ -1,9 +1,11 @@
 "use client";
 
+// Core
+import { useEffect } from "react";
+
 // Components
-import EntityData from "@/components/EntityData";
-import { Key, useEffect } from "react";
-import { LoadingPlaceholder } from "@/components/LoadingPlaceholder";
+import Loading from "@/components/Loading";
+import List from "@/components/List";
 
 // Actions
 import { fetchCreatures } from "@/lib/store";
@@ -12,12 +14,8 @@ import { fetchCreatures } from "@/lib/store";
 import { useDispatch, useSelector } from "@/lib/hooks";
 import { SITE_CONFIG } from "@/config/site";
 
-// Types
-import { EntityDataProps } from "@/types";
-
 export default function Creatures() {
   const dispatch = useDispatch();
-  const { data, status } = useSelector(({ creatures }) => creatures);
 
   // Read more about aborting requests here:
   // https://redux-toolkit.js.org/api/createAsyncThunk#canceling-while-running
@@ -31,9 +29,12 @@ export default function Creatures() {
     return () => creaturesFetchRequest.abort();
   }, [dispatch]);
 
-  return status === "loading" ? (
-    <LoadingPlaceholder elementsCount={SITE_CONFIG.itemsPerRequest} />
-  ) : (
-    data?.map((item: EntityDataProps, i: Key) => <EntityData key={i} {...item} />)
+  const { data, status } = useSelector(({ creatures }) => creatures);
+  const content = status === "loading" ? <Loading /> : <List data={data} />;
+
+  return (
+    <main className="flex flex-1 flex-col m-auto max-w-md w-full items-left">
+      {content}
+    </main>
   );
 }

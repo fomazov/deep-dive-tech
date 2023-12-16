@@ -1,6 +1,6 @@
 // Components
 import { Button } from "@/components/ui/Button";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import {
   HoverCard,
   HoverCardContent,
@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/HoverCard";
 
 // Types
-import { EntityDataProps } from "@/types";
+import { ListItemProps } from "@/types";
 
 const PropertyItem: React.FC<{ label: string; value: string }> = ({
   label,
@@ -23,7 +23,7 @@ const PropertyItem: React.FC<{ label: string; value: string }> = ({
   </div>
 );
 
-const EntityData: React.FC<EntityDataProps> = ({
+const ListItem: React.FC<ListItemProps> = ({
   id,
   habitat,
   lifespan,
@@ -38,11 +38,11 @@ const EntityData: React.FC<EntityDataProps> = ({
     <Card className="mb-3">
       <CardHeader>
         <CardTitle>{species}</CardTitle>
-        <CardDescription>
+        <CardContent>
           <HoverCard>
             <HoverCardTrigger asChild>
               <Button className="px-0" variant="link">
-                #{id}
+                ( hover here to see more )
               </Button>
             </HoverCardTrigger>
             <HoverCardContent className="w-full">
@@ -51,16 +51,16 @@ const EntityData: React.FC<EntityDataProps> = ({
                   { label: "Lifespan", value: lifespan },
                   { label: "Size", value: size },
                   { label: "Habitat", value: habitat },
-                ].map((property, index) => (
-                  <PropertyItem key={index} {...property} />
+                ].map(property => (
+                  <PropertyItem key={`${id}-${property.label}`} {...property} />
                 ))}
               </div>
             </HoverCardContent>
           </HoverCard>
-        </CardDescription>
+        </CardContent>
       </CardHeader>
     </Card>
   );
 };
 
-export default EntityData;
+export default ListItem;
