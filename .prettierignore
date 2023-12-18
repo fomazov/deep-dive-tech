@@ -1,0 +1,15 @@
+# Dependency directories
+node_modules/
+
+# Environment variables files (dotenv)
+.env.*
+
+# Infrastructure configuration files
+*.yml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
