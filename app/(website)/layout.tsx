@@ -21,7 +21,7 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: SITE_CONFIG.title,
   description: SITE_CONFIG.description,
 };

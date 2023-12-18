@@ -1,8 +1,8 @@
 {
-  "name": "deep-dive-tech",
-  "version": "0.1.0",
+  "name": "marine-creatures",
+  "version": "1.0.0",
   "private": true,
-  "homepage": "https://github.com/fomazov/deep-dive-tech",
+  "homepage": "https://github.com/fomazov/margine-creatures",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

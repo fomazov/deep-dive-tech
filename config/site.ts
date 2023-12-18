@@ -1,11 +1,10 @@
 export const SITE_CONFIG = {
-  name: "deep-dive-tech",
-  title: "Deep Dive Tech",
-  description: "Navigating the Depths of Cutting-Edge Innovation.",
+  name: "marine-creatures",
+  title: "Marine Creatures",
+  description: "Navigating the ocean of tech",
   defaultTheme: "system",
   links: {
-    github:
-      "https://github.com/fomazov/deep-dive-tech/tree/feature/request_cancellation",
+    github: "https://github.com/fomazov/marine-creatures",
     website: "https://oleksii.fomazov.name",
   },
   latency: 2000,
