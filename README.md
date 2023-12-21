@@ -1,10 +1,10 @@
-## marine-creatures.vercel.app
+## Marine Creatures
 
-This repository contains the demo project covered in my article on Medium.
+This repository contains the demo project covered in [my article on Medium](https://medium.com/octopus-labs-london/cancelling-xhrs-with-next-js-14-and-rtk-2-9474d98a87c9).
 
 It is an auxiliary tool so that the reader can see the concepts I have described in action.
 
-<img src="https://github.com/fomazov/marine-creatures/blob/main/public/marine-creatures.png?raw=true" width="475">
+<img src="https://github.com/fomazov/marine-creatures/blob/main/public/marine-creatures-repo.png?raw=true" width="475">
 
 ## Features
 - Modern small [SSR](https://nextjs.org/docs/app/building-your-application/rendering) application based on [Next.js 14 App Router](https://nextjs.org/docs/app)
